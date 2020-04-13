@@ -20,3 +20,9 @@ ctx.beginPath(); // start the drawing
 ctx.moveTo(x, y);
 ctx.lineTo(x, y);
 ctx.stroke();
+
+// handler function for the keys
+
+function handleKey(params) {
+    console.log('in handleKey function');
+};
