@@ -22,7 +22,9 @@ ctx.lineTo(x, y);
 ctx.stroke();
 
 // handler function for the keys
-
 function handleKey(params) {
     console.log('in handleKey function');
 };
+// listen for arrow keys, can listen on anything. Site Wide === window
+// pass in a reference to handleKey function above, as second callback parameter
+window.addEventListener('keydown', handleKey);
