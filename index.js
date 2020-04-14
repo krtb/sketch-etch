@@ -67,3 +67,15 @@ function handleKey(e) {
 // listen for arrow keys, can listen on anything. Site Wide === window
 // pass in a reference to handleKey function above, as second callback parameter
 window.addEventListener('keydown', handleKey);
+
+// clear screen on Shake function
+function clearCanvas() {
+    canvas.classList.add('shake');
+    ctx.clearRect(0,0,width,height);
+    // use 3rd argument for addEventListener, options
+    // once === unbinds event listener once complete
+    canvas.addEventListener('animationend', function() {
+        canvas.classList.remove('shake')
+    }, {once: true})
+}
+ shakeButton.addEventListener('click', clearCanvas);
