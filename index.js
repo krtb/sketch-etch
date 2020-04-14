@@ -15,8 +15,10 @@ let y = Math.floor(Math.random() * height);
 
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 10;
+ctx.lineWidth = 50;
 
+let hue = 0;
+ctx.strokeStyle = `hsl(${hue},100%, 50%)`;
 ctx.beginPath(); // start the drawing
 ctx.moveTo(x, y);
 ctx.lineTo(x, y);
@@ -24,6 +26,10 @@ ctx.stroke();
 
 function draw({ key }) {
     console.log(key);
+
+    // increment hue color by 1 on stroke
+    hue += 10;
+    ctx.strokeStyle = `hsl(${Math.random() * 360},100%, 50%)`;
 
     ctx.beginPath();
     // move to where it used to be
@@ -42,7 +48,6 @@ function draw({ key }) {
         case 'ArrowLeft':
             x -= MOVE_AMOUNT;
             break;
-    
         default:
             break;
     }
