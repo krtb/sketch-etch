@@ -21,9 +21,27 @@ ctx.moveTo(x, y);
 ctx.lineTo(x, y);
 ctx.stroke();
 
+function draw({ key }) {
+    console.log(key);
+
+    ctx.beginPath();
+    // move to where it used to be
+    ctx.moveTo(x,y);
+
+    x -= 100;
+    y -= 100;
+
+    ctx.lineTo(x,y);
+    ctx.stroke();
+}
+
 // handler function for the keys
-function handleKey(params) {
-    console.log('in handleKey function');
+function handleKey(e) {
+    const arrowKey = e.key
+    if (arrowKey.includes('Arrow')) {
+        e.preventDefault()
+        draw({ key: arrowKey });
+    }
 };
 // listen for arrow keys, can listen on anything. Site Wide === window
 // pass in a reference to handleKey function above, as second callback parameter
