@@ -4,7 +4,8 @@ const ctx = canvas.getContext('2d');
 
 // Grab shake button
 const shakeButton = document.querySelector('.shake');
-
+// add a true constant variable, won't be changing
+const MOVE_AMOUNT = 10;
 // setup canvas for drawing
 // use top level variables for math
 const { width, height } = canvas;
@@ -28,8 +29,23 @@ function draw({ key }) {
     // move to where it used to be
     ctx.moveTo(x,y);
 
-    x -= 100;
-    y -= 100;
+    switch (key) {
+        case 'ArrowUp':
+            y -= MOVE_AMOUNT;
+            break;
+        case 'ArrowDown':
+            y += MOVE_AMOUNT;
+            break;
+        case 'ArrowRight':
+            x += MOVE_AMOUNT;
+            break;
+        case 'ArrowLeft':
+            x -= MOVE_AMOUNT;
+            break;
+    
+        default:
+            break;
+    }
 
     ctx.lineTo(x,y);
     ctx.stroke();
